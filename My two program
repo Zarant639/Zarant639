@@ -1,0 +1,10 @@
+#include <stdio.h>
+    int x = 5;
+    int y = 10000;
+    int z = 5 * 10000;
+int main(void) {
+    printf("%d %d\n", x, y);
+    printf("%d %d\n", z, y);
+    return 0;
+}
+    
