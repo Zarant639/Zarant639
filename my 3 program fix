@@ -1,0 +1,19 @@
+#include <stdio.h>
+int main(void) {
+
+    char age = 100;
+    scanf("%d", &age);
+        if (age >= 14) {
+            printf("Acessful\n");
+    }
+        else if (age <= 14) {
+            printf("You're a baby\n");
+    }
+        else if (age <= 0) {
+            printf("Unknown age\n");
+    }
+        else if (age > 100) {
+            printf("Unknown age\n");
+            return 0;
+    }
+}
