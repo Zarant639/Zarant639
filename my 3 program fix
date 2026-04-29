@@ -1,6 +1,5 @@
 #include <stdio.h>
 int main(void) {
-
     char age = 100;
     scanf("%d", &age);
         if (age >= 14) {
