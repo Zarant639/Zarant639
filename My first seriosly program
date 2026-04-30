@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main(void) {
+    FILE *file;
+    int age;
+    // Write to file //
+    file = fopen("age.txt", "a");
+        if (file == NULL) {
+            printf("File error\n");
+            return 1; }
+    printf("Enter age: ");
+    scanf("%d", &age);
+    // Age check //
+    if (age < 14 || age >= 100) {
+        printf("%dAge error\n", age);
+    }   else {
+        printf("%dAccesful\n", age);
+    }
+    fprintf(file, "%d", age);
+    fclose(file);
+    return 0;
+}
