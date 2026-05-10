@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <time.h>
+#include <errno.h>
+
+int age;
+    int main(void) {
+        
+        //Выделяем память для age
+        int *age = malloc(sizeof(int));
+        
+                if (age == NULL) {
+                    perror("malloc");
+                    return 1;
+                }
+            write(1, "Enter the age: \n", 18);
+            scanf("%d", age);
+            
+        //Проверяеи возраст пользователя
+                if (*age < 0 || *age > 127) {
+                    perror("age");
+                    return 1;
+                }
+              
+                if (*age < 14) {
+                    write(2, "Baby\n", 5);
+                    free(age);
+                    return 1;
+                }
+                
+                if (scanf("%d", &age) != 1) {
+                    write(2, "invalid input\n", 14);
+                    return 1;
+                }
+                    write(1, "Successful\n", 11);
+
+        //Открываем файл и записываем туда age
+        FILE *file = fopen("age.log", "a");
+            if (file == NULL) {
+                perror("fopen");
+                return 1;
+                }
+                
+        //Записываем время когда ввели возраст
+        time_t now = time(NULL);
+        char *time_str = ctime(&now);
+        
+        //Выделяем память для журнала
+    char *buffer = malloc(256);
+            if (buffer == NULL) {
+                perror("buffer");
+                return 1;
+                }
+                
+        //Записываем данные в журнал
+            fprintf(file, "%s - %d\n", time_str, age);
+            fprintf(stdout, "%s - %d\n", time_str, age);
+            
+        //Записываем возраст
+            fprintf(file, "%d\n", age);
+            fprintf(stdout, "%d\n", age);
+        fclose(file);
+        
+        free(age);
+        free(buffer);
+    return 0;
+}
